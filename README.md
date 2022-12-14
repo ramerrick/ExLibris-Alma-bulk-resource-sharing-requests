@@ -5,39 +5,40 @@
 <b>Long description/background:</b>
 The script parses over an XML file exported from a reference manager (Zotero, EndNote and Mendeley files have been tested and work, others may also work). Elements and attributes that are required  to request a interlibrary loan are added to lists. A loop is then used to add the elements from the lists into a JSON object that is then sent with a POST call to the Alma user API to place the requests. The API response is then added to a dataframe which contains each citation's details. The dataframe is then saved as an excel file to be sent to the requester.
 
-Related procedures are saved with the script on running a new request.
+A pdf with local instructions on running the script has also been included in the repository. 
 
 <b>API:</b> Alma, users, read/write</br>
 Originally written and executed with Anaconda/Jupyter</br>
 <b>Output files:</b> two output files are created Bulk_ill_request_response.xlsx and Bulk_ill_request_response.csv. The csv file is written as each request is placed. This file is created in case the script is suddenly interrupted and halted.
 
 <b>Modules/Libraries used:</b>
-	• Requests (for API communication)
-	• Requests.structures import CaseInsensitiveDict (used to create and send JSON data objects)
-	• Pandas (using data frames)
-	• Re (regular expressions)
-	• Datetime (current day/time, used to time)
-	• xml.etree.ElementTree (used to parse XML file)
-	• Xlsxwriter (used to create xlsx file)
-	• ipywidgets import IntProgress (used for progress bar)
-	• Python.display import display (used for progress bar)
-	
+<ul>
+<li> Requests (for API communication)</li>
+<li>Requests.structures import CaseInsensitiveDict (used to create and send JSON data objects)</li>
+<li>Pandas (using data frames)</li>
+<li>Re (regular expressions)</li>
+<li>Datetime (current day/time, used to time)</li>
+<li>xml.etree.ElementTree (used to parse XML file)</li>
+<li>Xlsxwriter (used to create xlsx file)</li>
+<li>ipywidgets import IntProgress (used for progress bar)</li>
+<li>Python.display import display (used for progress bar)</li>
+</ul>	
 <b>Includes:</b>
-	• Timing the script from start to finish
-	• Importing an XML file
-	• Parsing XML required elements into lists
-	• Parsing XML required attributes into lists
-	• Creating a data frame from lists
-	• Iterating over the list using a for loop, values contained in the lists used to build individual JSON data objects for each fine to be sent to the API
-	• Post API requests with JSON object and write response to variable
-	• Selection statement, look for error notifier with regular expressions:
-		○ If there is error: Look for error message in response using regular expressions and contain the message, add it to variable
-		○ If there is no error add success message to variable
-	• Add either success or error message (contained in variable) to the notes column of the data frame
-	• Write new data frame with updated notes column with error and success messages to xlsx and csv files
-	• Create a data frame containing the number of each response and add it to sheet two of the spreadsheet.
-	• Display records processed.
-	
+<ul>
+<li>Timing the script from start to finish</li>
+<li>Importing an XML file</li>
+<li>Parsing XML required elements into lists</li>
+<li>Parsing XML required attributes into lists</li>
+<li>Creating a data frame from lists</li>
+<li>Iterating over the list using a for loop, values contained in the lists used to build individual JSON data objects for each fine to be sent to the API</li>
+<li>Post API requests with JSON object and write response to variable
+<li>Selection statement, look for error notifier with regular expressions:</li>
+		-If there is error: Look for error message in response using regular expressions and contain the message, add it to variable, If there is no error add success message to variable
+<li>Add either success or error message (contained in variable) to the notes column of the data frame</li>
+<li>Write new data frame with updated notes column with error and success messages to xlsx and csv files</li>
+<li>Create a data frame containing the number of each response and add it to sheet two of the spreadsheet.</li>
+<li>Display records processed.</li>
+</ul>		
 	
 <b>Resources Used:</b></br>
 API console https://developers.exlibrisgroup.com/console/</br>
